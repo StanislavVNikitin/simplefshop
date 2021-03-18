@@ -1,0 +1,31 @@
+<div id="content">
+ 			<div class="row">
+        <div class="col-7">Наименование Товара</div>
+        <div class="col-2">Количество</div>
+        <div class="col-2">Стоимость</div>
+        <div class="col-1"></div>
+      </div>
+      {% for d in data %}
+      <div class="row" id="busketitem{{ d.id|escape }}"">
+        <div class="col-7">{{ d.goodname }}</div>
+        <div class="col-2">{{ d.counts }}</div>
+        <div class="col-2">{{ d.price }}</div>
+        <div class="col-1">
+          <div class="btn btn-primary" onclick="DelBusketItem({{ d.id|escape }});">					
+            <p>X</p>
+          </div>		
+        </div>
+      </div>
+        {% endfor %}
+      <div class="row"><div class="col-9">Общая стоимость в корзине</div>
+      <div class="col-2"><b>{{ sumprice }}</b></div>
+      </div>
+      <div class="col-12"><br></div><div class="col-auto"><form method="post" action="index.php?c=order&act=add"><div class="form-row"><div class="col-4"><label for="inputName1">ФИО</label><input class="form-control" type="text" id="inputName1" name="username" placeholder="Имя Фамилия"></div><div class="col-4"><label for="inputEmeil1">Email</label><input type="email" class="form-control" id="inputEmeil1" name="useremail" placeholder="Емеил"></div> <div class="col-4"><label for="inputTel1">Телефон</label><input class="form-control" type="text" id="inputTel1" name="usertel" placeholder="Телефон"></div>  </div><div class="form-row">
+        <div class="col-12">Адрес доставки</div> 
+        <div class="col-2"> <label for="inputAddress1">Город</label><input type="text" class="form-control" name="usercity"  placeholder="Город">	</div>
+        <div class="col-4"> <label for="inputAddress2">Улица</label><input type="text" class="form-control" name="userstreet"  placeholder="Улица"></div>
+        <div class="col-2"> <label for="inputAddress3">Дом</label><input type="text" class="form-control" name="userhouse"  placeholder="дом"></div>
+        <div class="col-2"> <label for="inputAddress4">Корп./Стр.</label> <input type="text" class="form-control" name="userboild"  placeholder="корпус/строение"></div>
+        <div class="col-2"> <label for="inputAddress5">Квартира</label> <input type="text" class="form-control" name="userkv" placeholder="кв"></div>
+        </div><div class="col-12"><br></div><button type="submit" class="btn btn-primary mb-2" name="idorder" value="{{ idorde }}">Заказать</button></div></form></div>
+</div>

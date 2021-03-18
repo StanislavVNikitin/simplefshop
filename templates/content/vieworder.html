@@ -1,0 +1,52 @@
+<div id="content">
+ 			<div class="row">
+        <div class="col-1">Имя</div>
+        <div class="col-4">Заказ</div>
+        <div class="col-1">Статус</div>
+        <div class="col-2">Контакты</div>
+        <div class="col-2">Адрес</div>
+        <div class="col-1"></div>
+      </div>
+      {% for d in data %}
+      <hr>
+      <div class="row"> <div class="col-12"><h2>Заказ № {{ d.id|escape }}</h2></div>
+      </div>
+      <div class="row">
+        <div class="col-1">{{ d.name }}</div>
+        <div class="col-4">
+          <table class='table'>
+            <thead>
+              <tr>
+                <th scope='col'>Товар</th>
+                <th scope='col'>Количество</th>
+                <th scope='col'>Цена</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for b in d.ordersgood %}
+              <tr>
+                <th scope='row'>{{ b.goodname }}</th>
+                <td>{{ b.counts }}</td>
+                <td>{{ b.price }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class='col-9'>Общая стоимость: <b>{{ d.sumorder }}</b>
+          </div> 
+         </div>
+        <div class="col-1" id="orderitemstatus{{ d.id|escape }}">{{ d.varstatusorder }}</div>
+        <div class="col-2">{{ d.orderuser|raw }}</div>
+        <div class="col-2">{{ d.orderadress }}</div>
+        <div class="col-1" id="orderitem{{ d.id|escape }}">
+          {% if d.statusorder == 1 %}
+          <div class="btn btn-primary"  title="Заказ доставлен" onclick="UpdateOrder({{ d.id|escape }});">					
+            <p>Выполнен</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+        {% endfor %}
+</div>
+

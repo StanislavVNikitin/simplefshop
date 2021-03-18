@@ -1,0 +1,29 @@
+<div id="content">
+ 			<div class="row">
+        <div class="col-2">Логин</div>
+        <div class="col-5">Имя Пользователя</div>
+        <div class="col-2">Последний заказ</div>
+        <div class="col-1">Админ</div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+      </div>
+      {% for d in data %}
+      <div class="row" id="useritem{{ d.id|escape }}">
+        <div class="col-2">{{ d.login }}</div>
+        <div class="col-5">{{ d.name }}</div>
+        <div class="col-2">{{ d.lastidorder }}</div>
+        <div class="col-1" id="useritemadmin{{ d.id|escape }}">{{ d.roleadmin }}</div>
+        <div class="col-1">
+          <div class="btn btn-primary" title="Удалить пользователя" onclick="DelUserItem({{ d.id|escape }});">					
+            <p>X</p>
+          </div>
+        </div>
+        <div class="col-1">
+           <div class="btn btn-primary" title="Сделать Администратором" onclick="AdminUserItem({{ d.id|escape }});">					
+            <p>A</p>
+        </div>		
+        </div>
+      </div>
+        {% endfor %}
+</div>
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Интернет магазин{{ title }}</title>
+	<meta content="text/html; charset=Windows-1251" http-equiv="content-type">	
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css" /> 
+	<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap/bootstrap.min.css">	
+</head>
+<body>
+	<div id="header">
+		<h1>Интернет магазин{{ title }}</h1>
+	</div>
+
+  <nav class="navbar nav-pills navbar-expand navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.php">Главная <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?c=good&act=view">Каталог Товаров</a>
+        </li>
+        <li class="nav-item">
+          <a id='busket' class="nav-link" href="index.php?c=basket&act=view"> Корзина {{ colvo }}</a>
+        </li>
+        {% if userid != 0 or userid != null %}
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?c=user&act=info"">Личный кабинет</a>
+          </li>
+        {% endif %}
+        {% if useradmin != 0 %}
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?c=admin&act=admin"">Админка</a>
+          </li>
+        {% endif %}
+      </ul>
+      {% if userid == 0 or userid == null %}
+        <form class="form-inline" method="post" action="index.php?c=user&act=login">
+          <input class="form-control" type="text" placeholder="Логин" name="login">
+          <input class="form-control" type="password" placeholder="Пароль" name="password">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Войти</button>
+        </form>
+        <a href="index.php?c=user&act=reg" class="btn btn-outline-success" role="button" aria-pressed="true">Зарегистироваться</a>
+ 
+      {% else %}
+          <form class="form-inline" method='post' action='index.php?c=user&act=logout'>
+          <label  for="exampleInputEmail1" class="form-control">Здравствуйте {{ username }} </label>
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Выйти</button>
+      {% endif %}
+        </form>
+    </div>
+  </nav>
+
+{{ content|raw }}
+
+{% include "footer.tmpl" %} 

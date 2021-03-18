@@ -1,0 +1,17 @@
+
+	<div id="content">
+    <div class="row">
+      {% for d in data %}
+      <div class="col-4">
+        <h2>{{ d.name|escape }}</h2>
+        <img src="img/{{ d.image|escape }}" idth="150" height="150" alt="{{ d.name|escape }}">
+        <p>Стоимость {{ d.price|escape }} рублей</p>
+        <form method="post" action="index.php?c=good&act=view">
+          <div class="form-group"> 
+            <button class="btn btn-primary" type="submit">Перейти в Каталог</button>
+          </div>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+	</div>

@@ -1,0 +1,30 @@
+<div id="content">
+  <h2>Спасибо за покупку! Ваш Заказ № {{ idorder }} оформлен. Ждите звонка менеджера.</h2>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th scope='col'>Товар</th>
+        <th scope='col'>Количество</th>
+        <th scope='col'>Цена</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in data %}
+      <tr>
+        <th scope='row'>{{ d.goodname }}</th>
+        <td>{{ d.counts }}</td>
+        <td>{{ d.price }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class='col-9'>Общая стоимость: <b>{{ sumprice }}</b>
+  </div>
+  <br><p>Заказ оформлен на {{ userarray.username }} Емеил: {{ userarray.useremail }} Телефон {{ userarray.sertel }}<br>
+  Доставка по адресу город: {{ userarray.usercity }} улица: {{ userarray.userstreet }} дом:  {{ userarray.userhouse }} корпус: {{ userarray.userboild }} квартира: {{ userarray.userkv }}</p>
+  <div class='col-auto'>
+    <br><form method='post' action='index.php'>
+      <button type="submit" class="btn btn-primary mb-2" name="idorder">Перейти на главную страницу.</button>
+    </form>
+  </div>
+</div>

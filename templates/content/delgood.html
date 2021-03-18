@@ -1,0 +1,19 @@
+<div id="content">
+ 			<div class="row">
+        <div class="col-9">Товар</div>
+        <div class="col-2">Стоимость</div>
+        <div class="col-1"></div>
+      </div>
+      {% for d in data %}
+      <div class="row" id="gooditem{{ d.id|escape }}"">
+        <div class="col-9">{{ d.name }}</div>
+        <div class="col-2">{{ d.price }}</div>
+        <div class="col-1">
+          <div class="btn btn-primary" onclick="DelGoodItem({{ d.id|escape }});">					
+            <p>X</p>
+          </div>		
+        </div>
+      </div>
+        {% endfor %}
+</div>
+

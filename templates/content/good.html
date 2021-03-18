@@ -1,0 +1,16 @@
+
+    
+	<div id="content">
+        <div class="row">
+          {% for d in data %}
+          <div class="col-4">
+            <h2>{{ d.name|escape }}</h2>
+            <img src="img/{{ d.image|escape }}" width="150" height="150" alt="{{ d.name|escape }}">
+            <p>Стоимость {{ d.price|escape }} рублей</p>
+            <div class="btn btn-primary" onclick="AddToBusket({{ d.id|escape }});" class='ItemBuy'>					
+              <p>Добавить в корзину</p>
+            </div>		
+          </div>
+          {% endfor %}
+        </div>
+        </div>
